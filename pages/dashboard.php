@@ -7,55 +7,78 @@
         <div class="col-9">
             <div class="card p-3 mt-3 shadow">
             <h2>TIPIFICACIÓN GENERAL</h2><hr>
-            <form>
+            <form action="dashboard.php" method="post">
                 <div class="row">
                     <h3>Datos de cliente</h3>
                     <div class="col-6">
                     <small>Nombres y apellidos</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="nombre" required>
                     </div>
                     <div class="col-3">
                     <small>Núnero de contacto 1</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="numU" required>
                     </div>
                     <div class="col-3">
                     <small>Núnero de contacto 2</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="numD">
                     </div>
                     <div class="col-6">
                     <small>Correo</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="email" name="correo">
                     </div>
                     <div class="col-3">
                     <small>País</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="pais" required>
                     </div>
                     <div class="col-3">
                     <small>Ciudad/Estado</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="ciudad" required>
                     </div>
                     <h3>Datos de referidos</h3>
                     <div class="col-6">
                     <small>Nombre de referido</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="refUno">
                     </div>
                     <div class="col-6">
                     <small>Núnero de contacto</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="numRefU">
                     </div>
                     <div class="col-6">
                     <small>Nombre de referido</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="refDos">
                     </div>
                     <div class="col-6">
                     <small>Núnero de contacto</small>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="numRefD">
                     </div>
                     <div class="col-12">
                     <input class="form-control btn btn-outline-success" type="submit" name="btnTipifica" value="Registrar">
                     </div>
                 </div>
             </form>
+
+            <?php
+            if (isset($_POST['btnTipifica'])) {
+
+                # $user = $_SESSION['user'];
+                $nombre = $_POST['nombre'];
+                $numU = $_POST['numU'];
+                $numD = $_POST['numD'];
+                $correo = $_POST['correo'];
+                $pais = $_POST['pais'];
+                $ciudad = $_POST['ciudad'];
+                $refUno = $_POST['refUno'];
+                $numRefU = $_POST['numRefU'];
+                $refDos = $_POST['refDos'];
+                $numRefD = $_POST['numRefD'];
+
+                include("../conexion.php");
+                $conexion->query("INSERT INTO tipifica (nombre, numU, numD, correo, pais, ciudad, refUno, numRefU, refDos, numRefD) VALUES ('$nombre','$numU','$numD','$correo','$pais','$ciudad','$refUno','$numRefU','$refDos','$numRefD')");
+                include("../desconexion.php");
+            
+            }
+            ?>
+
             </div>
         </div>
         <div class="col-3">
