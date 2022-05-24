@@ -2,8 +2,8 @@
 
     $host = "localhost";
     $name = "root";
-    $pass = "Asiste.2021";
-    $database = "wlt";
+    $pass = "";
+    $database = "";
     
     error_reporting(1);
 
