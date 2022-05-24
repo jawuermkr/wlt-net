@@ -1,3 +1,12 @@
+<?php
+session_start();
+ob_start();
+
+if($_SESSION['correcto'] <> 1){
+  header("Location:../index.php");
+}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -19,7 +28,10 @@
         </ul>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2"><a href="../index.php">Salir</a></button>
+          <?php
+          echo "<p class='text-white'>" . $_SESSION['nombre'] . " | " ;
+          ?>
+          <a href="../index.php">Salir</a></p>
         </div>
       </div>
     </div>

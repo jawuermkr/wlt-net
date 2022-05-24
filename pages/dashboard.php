@@ -1,7 +1,8 @@
 <?php
-    include("../general/header.php");
-?>
 
+    include("../general/header.php");
+
+?>
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -9,22 +10,31 @@
             <h2>TIPIFICACIÓN GENERAL</h2><hr>
             <form action="dashboard.php" method="post">
                 <div class="row">
+                    <h3>Datos de asesor/a</h3>
+                    <div class="col-6">
+                    <small>Nombres y apellidos</small>
+                    <input class="form-control" type="text" name="nombreAse" readonly required value="<?php echo $_SESSION['nombre']; ?>">
+                    </div>
+                    <div class="col-3">
+                    <small>Fecha registro</small>
+                    <input class="form-control" type="text" name="fecha" readonly required value="<?php echo date("Y-m-d"); ?>">
+                    </div>
+                    <div class="col-3">
+                    <small>Marca</small>
+                    <input class="form-control" type="text" name="marca" readonly required value="<?php echo $_SESSION['marca']; ?>">
+                    </div>
                     <h3>Datos de cliente</h3>
                     <div class="col-6">
                     <small>Nombres y apellidos</small>
                     <input class="form-control" type="text" name="nombre" required>
                     </div>
-                    <div class="col-3">
-                    <small>Núnero de contacto 1</small>
-                    <input class="form-control" type="text" name="numU" required>
-                    </div>
-                    <div class="col-3">
-                    <small>Núnero de contacto 2</small>
-                    <input class="form-control" type="text" name="numD">
-                    </div>
                     <div class="col-6">
                     <small>Correo</small>
                     <input class="form-control" type="email" name="correo">
+                    </div>
+                    <div class="col-3">
+                    <small>Núnero de contacto 1</small>
+                    <input class="form-control" type="text" name="numU" required>
                     </div>
                     <div class="col-3">
                     <small>País</small>
@@ -33,6 +43,17 @@
                     <div class="col-3">
                     <small>Ciudad/Estado</small>
                     <input class="form-control" type="text" name="ciudad" required>
+                    </div>
+                    <div class="col-3">
+                    <small>Estado NET</small>
+                    <select class="form-control" type="text" name="estado" required>
+                        <option value="">-- Seleccione --</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Demo">Demo</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Desistio">Desistio</option>
+                        <option value="Solicitud de pago">Solicitud de pago</option>
+                    </select>
                     </div>
                     <h3>Datos de referidos</h3>
                     <div class="col-6">
@@ -60,22 +81,23 @@
             <?php
             if (isset($_POST['btnTipifica'])) {
 
-                # $user = $_SESSION['user'];
+                $nombreAse = $_SESSION['nombreAse'];
+                $fecha = date("Y-m-d");
+                $marca = $_POST['marca'];
                 $nombre = $_POST['nombre'];
-                $numU = $_POST['numU'];
-                $numD = $_POST['numD'];
                 $correo = $_POST['correo'];
+                $numU = $_POST['numU'];
                 $pais = $_POST['pais'];
                 $ciudad = $_POST['ciudad'];
+                $estado = $_POST['estado'];
                 $refUno = $_POST['refUno'];
                 $numRefU = $_POST['numRefU'];
                 $refDos = $_POST['refDos'];
                 $numRefD = $_POST['numRefD'];
 
                 include("../conexion.php");
-                $conexion->query("INSERT INTO tipifica (nombre, numU, numD, correo, pais, ciudad, refUno, numRefU, refDos, numRefD) VALUES ('$nombre','$numU','$numD','$correo','$pais','$ciudad','$refUno','$numRefU','$refDos','$numRefD')");
+                $conexion->query("INSERT INTO tipifica (nombreAse, fecha, marca, nombre, numU, correo, pais, ciudad, estado, refUno, numRefU, refDos, numRefD) VALUES ('$nombreAse','$fecha','$marca','$nombre','$correo','$numU','$pais','$ciudad','$estado','$refUno','$numRefU','$refDos','$numRefD')");
                 include("../desconexion.php");
-            
             }
             ?>
 
@@ -84,7 +106,9 @@
         <div class="col-3">
             <div class="card p-3 mt-3 shadow">
                 <h2>¡Recuerda!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Antes de dar costos, hablar de los beneficios, del ahorro comparado con las diferentes marcas con las que se contrata regularmente.</p>
+                <p>Conexción desde cualquier parte del mundo y desde cualquier dispositivo.</p>
+                <a href="#">Link de descarga Android_App</a>
 
             </div>
         </div>
