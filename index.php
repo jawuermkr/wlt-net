@@ -48,6 +48,7 @@
                 while ($consulta = mysqli_fetch_array($resultados)) {
                     $_SESSION['correcto'] = 1;
                     $_SESSION['nombre'] = $consulta['nombre'];
+                    $_SESSION['id'] = $consulta['identi'];
                     $_SESSION['marca'] = $consulta['marca'];
                 }
                 include("desconexion.php");

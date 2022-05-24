@@ -81,7 +81,7 @@
             <?php
             if (isset($_POST['btnTipifica'])) {
 
-                $nombreAse = $_SESSION['nombreAse'];
+                $identiAse = $_SESSION['id'];
                 $fecha = date("Y-m-d");
                 $marca = $_POST['marca'];
                 $nombre = $_POST['nombre'];
@@ -96,7 +96,7 @@
                 $numRefD = $_POST['numRefD'];
 
                 include("../conexion.php");
-                $conexion->query("INSERT INTO tipifica (nombreAse, fecha, marca, nombre, numU, correo, pais, ciudad, estado, refUno, numRefU, refDos, numRefD) VALUES ('$nombreAse','$fecha','$marca','$nombre','$correo','$numU','$pais','$ciudad','$estado','$refUno','$numRefU','$refDos','$numRefD')");
+                $conexion->query("INSERT INTO tipifica (identiAse, fecha, marca, nombre, correo, numU, pais, ciudad, estado, refUno, numRefU, refDos, numRefD) VALUES ('$identiAse','$fecha','$marca','$nombre','$correo','$numU','$pais','$ciudad','$estado','$refUno','$numRefU','$refDos','$numRefD')");
                 include("../desconexion.php");
             }
             ?>
