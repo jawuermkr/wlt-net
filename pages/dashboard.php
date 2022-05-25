@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-9">
             <div class="card p-3 mt-3 shadow">
-            <h2>Pauta en curso</h2><hr>
+            <h2>PAUTA EN CURSO</h2><hr>
                 <div class="card m-auto p-5 w-50 text-center">
                     <p>Disfruta esta final, y todos los juegos siguientes con la mejor señal en vivo. ⚽️
                     Canales de TV premium. 🎬 </br>

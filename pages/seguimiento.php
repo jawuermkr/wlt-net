@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-9">
             <div class="card p-3 mt-3 shadow">    
-                <h2>Consulta general</h2>
+                <h2>CONSULTA GENERAL</h2><hr>
                 <form action="seguimiento.php" method="post">
                     <div class="row">
                         <div class="col-4">    
