@@ -22,9 +22,9 @@ if($_SESSION['correcto'] <> 1){
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><img class="m-auto" src="../img/logo-white.png" width="45px"></li>
-            <li><a href="#" class="nav-link px-2 text-white">Dashboard</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Registro</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Seguimiento</a></li>
+            <li><a href="dashboard.php" class="nav-link px-2 text-white">Dashboard</a></li>
+            <li><a href="registro.php" class="nav-link px-2 text-white">Registro</a></li>
+            <li><a href="seguimiento.php" class="nav-link px-2 text-white">Seguimiento</a></li>
         </ul>
 
         <div class="text-end">
