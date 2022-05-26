@@ -54,6 +54,7 @@
                         <option value="Desistio">Desistio</option>
                         <option value="No conecta">No conecta</option>
                         <option value="No contesta">No contesta</option>
+                        <option value="No whatsapp">No whatsapp</option>
                         <option value="Solicitud de pago">Solicitud de pago</option>
                     </select>
                     </div>
