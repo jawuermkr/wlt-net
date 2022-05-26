@@ -52,6 +52,8 @@
                         <option value="Demo">Demo</option>
                         <option value="Pendiente">Pendiente</option>
                         <option value="Desistio">Desistio</option>
+                        <option value="No conecta">No conecta</option>
+                        <option value="No contesta">No contesta</option>
                         <option value="Solicitud de pago">Solicitud de pago</option>
                     </select>
                     </div>
