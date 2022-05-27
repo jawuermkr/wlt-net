@@ -115,6 +115,7 @@
                                     <option value="Desistio">Desistio</option>
                                     <option value="No contacto">No contacto</option>
                                     <option value="No whatsapp">No whatsapp</option>
+                                    <option value="Restringido">Restringido</option>
                                     
                                     <option value="Solicitud de pago">Solicitud de pago</option>
                                     </select>
