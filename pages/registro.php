@@ -49,11 +49,16 @@
                     <select class="form-control" type="text" name="estado" required>
                         <option value="">-- Seleccione --</option>
                         <option value="Activo">Activo</option>
-                        <option value="Demo">Demo</option>
-                        <option value="Pendiente">Pendiente</option>
+                        <option value="Solicitud Demo">Solicitud  Demo</option>
+                        <option value="Demo Activo">Demo Activo</option>
+
+                        <option value="Gestión en Proceso">Gestión en Proceso</option>
+                        <option value="Sin Respuesta en Proceso">Sin Respuesta en Proceso</option>
+
                         <option value="Desistio">Desistio</option>
-                        <option value="No conecta">No conecta</option>
-                        <option value="No contesta">No contesta</option>
+                        <option value="No contacto">No contacto</option>
+                        <option value="No whatsapp">No whatsapp</option>
+                        
                         <option value="Solicitud de pago">Solicitud de pago</option>
                     </select>
                     </div>
