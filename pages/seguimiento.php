@@ -71,7 +71,6 @@
                     </svg></button>
                     </td>
                     <td><?php echo $cliente ['identiAse']; ?></td>
-                    <td><?php echo $cliente ['identiAse']; ?></td>
                     <td><?php echo $cliente ['fecha']; ?></td>
                     <td><?php echo $cliente ['nombre']; ?></td>
                     <td><?php echo $cliente ['correo']; ?></td>
