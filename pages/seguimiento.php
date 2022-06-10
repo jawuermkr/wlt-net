@@ -66,7 +66,16 @@
                     <?php foreach($clientes as $cliente) { ?>
                     <tr>
                     <td>
-                    <button class="btn btn-primary" onclick="btnUpdate('<?php echo $cliente['id']; ?>', '<?php echo $cliente['fecha']; ?>', '<?php echo $cliente['nombre']; ?>', '<?php echo $cliente['estado']; ?>')" data-toggle="modal" data-target="#modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <button class="btn btn-primary" onclick="btnUpdate(
+                        '<?php echo $cliente['id']; ?>', 
+                        '<?php echo $cliente['fecha']; ?>', 
+                        '<?php echo $cliente['nombre']; ?>',
+                        '<?php echo $cliente ['correo']; ?>',
+                        '<?php echo $cliente ['numU']; ?>',
+                        '<?php echo $cliente ['pais']; ?>',
+                        '<?php echo $cliente ['ciudad']; ?>', 
+                        '<?php echo $cliente['estado']; ?>')" 
+                        data-toggle="modal" data-target="#modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                     </svg></button>
                     </td>
@@ -85,8 +94,8 @@
                 </div>
                 
                 <!-- Modal  Actualizar -->
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                <div class="modal fade bd-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
@@ -96,30 +105,50 @@
                             </div>
                             <div class="modal-body">
                                 <form action="actualizar.php" method="post">
-
+                                <div class="row">
                                     <input class="form-control" type="hidden" name="id" id="id">
+                                    <div class="col-6">
                                     <label>Fecha de contacto</label>
                                     <input class="form-control" type="date" name="fecha" id="fecha">
+                                    </div>
+                                    <div class="col-6">
                                     <label>Nombre</label>
                                     <input class="form-control" type="text" name="nombre" id="nombre">
+                                    </div>
+                                    <div class="col-8">
+                                    <label>Correo</label>
+                                    <input class="form-control" type="text" name="correo" id="correo">
+                                    </div>
+                                    <div class="col-4">
+                                    <label>Número</label>
+                                    <input class="form-control" type="text" name="numU" id="numU">
+                                    </div>
+                                    <div class="col-4">
+                                    <label>País</label>
+                                    <input class="form-control" type="text" name="pais" id="pais">
+                                    </div>
+                                    <div class="col-4">
+                                    <label>Ciudad</label>
+                                    <input class="form-control" type="text" name="ciudad" id="ciudad">
+                                    </div>
+                                    <div class="col-4">
                                     <label>Estado</label>
                                     <select class="form-control" type="text" name="estado" id="estado">
                                     <option value="">-- Seleccione --</option>
                                     <option value="Activo">Activo</option>
                                     <option value="Solicitud Demo">Solicitud  Demo</option>
                                     <option value="Demo Activo">Demo Activo</option>
-
                                     <option value="Gestión en Proceso">Gestión en Proceso</option>
                                     <option value="Sin Respuesta en Proceso">Sin Respuesta en Proceso</option>
-
                                     <option value="Desistio">Desistio</option>
                                     <option value="No contacto">No contacto</option>
                                     <option value="No whatsapp">No whatsapp</option>
-                                    <option value="Restringido">Restringido</option>
-                                    
+                                    <option value="Restringido">Restringido</option>       
                                     <option value="Solicitud de pago">Solicitud de pago</option>
                                     </select>
+                                    </div>
                                     <input class="form-control btn-outline-success" type="submit" name="btnA" value="Actualizar">
+                                </div>
                                 </form>
                             </div>
                         </div>
@@ -190,11 +219,15 @@
 </div>
 
 <script>
-    function btnUpdate(id, dos, tres, cuatro) {
+    function btnUpdate(id, dos, tres, cuatro, cinco, seis, siete, ocho) {
         document.getElementById('id').value = id;
         document.getElementById('fecha').value = dos;
         document.getElementById('nombre').value = tres;
-        document.getElementById('estado').value = cuatro;
+        document.getElementById('correo').value = cuatro;
+        document.getElementById('numU').value = cinco;
+        document.getElementById('pais').value = seis;
+        document.getElementById('ciudad').value = siete;
+        document.getElementById('estado').value = ocho;
     }
 
 </script>
