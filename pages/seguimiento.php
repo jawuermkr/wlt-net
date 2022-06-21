@@ -2,6 +2,9 @@
 
     include("../general/header.php");
 
+    $fecha_dia = date('Y-m-d');
+    $fecha_i_mes = date('Y-m-01');
+    $fecha_f_mes = date('Y-m-t');
 ?>
 <div class="container">
     <div class="row">
@@ -212,7 +215,30 @@
             <div class="card p-3 mt-3 shadow">
                 <h2>Estadísticas</h2>
                 <h3>Día</h3>
+                <div>
+                <canvas id="dia"></canvas>
+                </div>
                 <h3>Mes</h3>
+                <div>
+                <canvas id="mes"></canvas>
+                </div>
+                <?php  
+                // Gráficas
+                include("../conexion.php");
+                $sql = "SELECT COUNT(*) id FROM tipifica WHERE fecha = '$fecha_dia'";
+                $resultado = mysqli_query ($conexion, $sql) or die (mysql_error ());
+                $clientes = array();
+                while( $rows = mysqli_fetch_assoc($resultado) ) {
+                    $dia = $rows['id'];
+                }
+                $sql = "SELECT COUNT(*) id FROM tipifica WHERE fecha BETWEEN '$fecha_i_mes' AND '$fecha_f_mes'";
+                $resultado = mysqli_query ($conexion, $sql) or die (mysql_error ());
+                $clientes = array();
+                while( $rows = mysqli_fetch_assoc($resultado) ) {
+                    $mes = $rows['id'];
+                }
+                include("../desconexion.php");
+            ?>
             </div>
         </div>
     </div>
