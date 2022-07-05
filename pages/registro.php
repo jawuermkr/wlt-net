@@ -46,72 +46,17 @@
                     </div>
 
                     <div class="col-6">
-                    <small>Estado NET</small>
-                    <select class="form-control" id="estado" type="text" name="estado" required onchange="tipifica()">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Activo">Activo</option>
-                        <option value="Desistió">Desistió</option>
-                        <option value="No contacto">No contacto</option>
-                        <option value="Sin respuesta">Sin respuesta</option>
-                        <option value="Gestión en proceso">Gestión en proceso</option>
-                    </select>
+                        <small>Estado</small>
+                        <select class="form-control" name="estado" id="estado" onchange="cargarPueblos();">
+                            <option value="">Seleccione estado</option>
+                        </select>
                     </div>
-
-
-                    <div id="activo" class="col-6" style="display:none">
-                    <small>Activo</small>
-                    <select class="form-control" type="text" name="tipif">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Paquete Mensual">Paquete Mensual</option>
-                        <option value="Paquete 3 meses">Paquete 3 meses</option>
-                        <option value="Paquete 6 meses">Paquete 6 meses</option>
-                        <option value="Paquete 12 meses">Paquete 12 meses</option>
-                    </select>
+                    <div class="col-6">
+                        <small>Tipíficación</small>
+                        <select class="form-control" name="tipif" id="tipif">
+                            <option value="">Seleccione tipificación</option>
+                        </select>
                     </div>
-                    <div id="desistio" class="col-6" style="display:none">
-                    <small>Desistió</small>
-                    <select class="form-control" type="text" name="tipif">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Paquete Mensual">Paquete Mensual</option>
-                        <option value="Precio / Competencia">Precio / Competencia</option>
-                        <option value="Inconformidad con la plataforma">Inconformidad con la plataforma</option>
-                        <option value="Medio de pago">Medio de pago</option>
-                        <option value="Servicio Activo">Servicio Activo</option>
-                    </select>
-                    </div>
-                    <div id="noContacto" class="col-6" style="display:none">
-                    <small>No contacto</small>
-                    <select class="form-control" type="text" name="tipif">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Visto /Leído">Visto /Leído</option>
-                        <option value="Sin WhatsApp">Sin WhatsApp</option>
-                        <option value="Bloqueo">Bloqueo</option>
-                    </select>
-                    </div>
-                    <div id="sinRespuesta" class="col-6" style="display:none">
-                    <small>Sin respuesta</small>
-                    <select class="form-control" type="text" name="tipif">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Uso demo / Sin respuesta">Uso demo / Sin respuesta</option>
-                        <option value="Servicio Gratis">Servicio Gratis</option>
-                        <option value="No tiene tiempo">No tiene tiempo</option>
-                        <option value="Sin intención de compra">Sin intención de compra</option>
-                        <option value="Problemas descargar la APP">Problemas descargar la APP</option>
-                    </select>
-                    </div>
-                    <div id="gestionProceso" class="col-6" style="display:none">
-                    <small>Gestión en proceso</small>
-                    <select class="form-control" type="text" name="tipif">
-                        <option value="">-- Seleccione --</option>
-                        <option value="Demo activo">Demo activo</option>
-                        <option value="Solicitud de demo">Solicitud de demo</option>
-                        <option value="Solicitud de pago">Solicitud de pago</option>
-                        <option value="Posible venta">Posible venta</option>
-                        <option value="Cliente en gestión">Cliente en gestión</option>
-                    </select>
-                    </div>
-
-
                     <h3>Datos de referidos</h3>
                     <div class="col-6">
                     <small>Nombre de referido</small>
@@ -160,6 +105,7 @@
             ?>
 
             </div>
+        
         </div>
         <div class="col-3">
             <div class="card p-3 mt-3 shadow">
@@ -174,41 +120,59 @@
 </div>
 
 <script>
-    function tipifica() {
-        estado = document.getElementById('estado').value
+function cargarProvincias() {
+    var array = ["Activo","Desistió","No_contacto","Sin_respuesta","Gestión_en_proceso"];
+    array.sort();
+    addOptions("estado", array);
+}
 
-        if(estado == 'Activo'){
-            document.getElementById('activo').style.display = "block";
-            document.getElementById('desistio').style.display = "none";
-            document.getElementById('noContacto').style.display = "none";
-            document.getElementById('sinRespuesta').style.display = "none";
-            document.getElementById('gestionProceso').style.display = "none";
-        }else if(estado == 'Desistió') {
-            document.getElementById('activo').style.display = "none";
-            document.getElementById('desistio').style.display = "block";
-            document.getElementById('noContacto').style.display = "none";
-            document.getElementById('sinRespuesta').style.display = "none";
-            document.getElementById('gestionProceso').style.display = "none";
-        }else if(estado == 'No contacto') {
-            document.getElementById('activo').style.display = "none";
-            document.getElementById('desistio').style.display = "none";
-            document.getElementById('noContacto').style.display = "block";
-            document.getElementById('sinRespuesta').style.display = "none";
-            document.getElementById('gestionProceso').style.display = "none";
-        }else if(estado == 'Sin respuesta') {
-            document.getElementById('activo').style.display = "none";
-            document.getElementById('desistio').style.display = "none";
-            document.getElementById('noContacto').style.display = "none";
-            document.getElementById('sinRespuesta').style.display = "block";
-            document.getElementById('gestionProceso').style.display = "none";
-        }else if(estado == 'Gestión en proceso') {
-            document.getElementById('activo').style.display = "none";
-            document.getElementById('desistio').style.display = "none";
-            document.getElementById('noContacto').style.display = "none";
-            document.getElementById('sinRespuesta').style.display = "none";
-            document.getElementById('gestionProceso').style.display = "block";
-        }
+//Función para agregar opciones a un <select>.
+function addOptions(domElement, array) {
+    var selector = document.getElementsByName(domElement)[0];
+    for (provincia in array) {
+        var opcion = document.createElement("option");
+        opcion.text = array[provincia];
+        // Añadimos un value a los option para hacer mas facil escoger los pueblos
+        opcion.value = array[provincia].toLowerCase()
+        selector.add(opcion);
     }
+}
+
+function cargarPueblos() {
+    // Objeto de provincias con pueblos
+    var listaPueblos = {
+      activo: ["Paquete Mensual","Paquete 3 meses","Paquete 6 meses","Paquete 12 meses"],
+      desistió: ["Paquete Mensual","Precio / Competencia","Inconformidad con la plataforma","Medio de pago","Servicio Activo"],
+      no_contacto: ["Visto /Leído","Sin WhatsApp","Bloqueo"],
+      sin_respuesta: ["Uso demo / Sin respuesta","Servicio Gratis","No tiene tiempo","Sin intención de compra","Problemas descargar la APP"],
+      gestión_en_proceso: ["Demo activo","Solicitud de demo","Solicitud de pago","Posible venta","Cliente en gestión"]
+    }
+    
+    var provincias = document.getElementById('estado')
+    var pueblos = document.getElementById('tipif')
+    var provinciaSeleccionada = provincias.value
+    
+    // Se limpian los pueblos
+    pueblos.innerHTML = '<option value="">Tipificación...</option>'
+    
+    if(provinciaSeleccionada !== ''){
+      // Se seleccionan los pueblos y se ordenan
+      provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
+      provinciaSeleccionada.sort()
+    
+      // Insertamos los pueblos
+      provinciaSeleccionada.forEach(function(pueblo){
+        let opcion = document.createElement('option')
+        opcion.value = pueblo
+        opcion.text = pueblo
+        pueblos.add(opcion)
+      });
+    }
+    
+  }
+  
+// Iniciar la carga de provincias solo para comprobar que funciona
+cargarProvincias();
 </script>
 
 <?php

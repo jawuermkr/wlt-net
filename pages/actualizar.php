@@ -17,6 +17,7 @@ if (isset($_POST['btnA'])) {
     $pais = $_POST['pais'];
     $ciudad = $_POST['ciudad'];
     $estado = $_POST['estado'];
+    $tipif = $_POST['tipif'];
 
     include("../conexion.php");
 
@@ -27,10 +28,22 @@ if (isset($_POST['btnA'])) {
         numU = '$numU',
         pais = '$pais',
         ciudad = '$ciudad',
-        estado = '$estado' WHERE id = '$id'";
+        estado = '$estado',
+        tipif = '$tipif' WHERE id = '$id'";
 }
 mysqli_query($conexion, $_UPDATE_SQL);
 include("../conexion.php");
+
+echo $id . "<br/>";
+echo $fecha . "<br/>";
+echo $nombre . "<br/>";
+echo $correo . "<br/>";
+echo $numU . "<br/>";
+echo $pais . "<br/>";
+echo $ciudad . "<br/>";
+echo $estado . "<br/>";
+echo $tipif . "<br/>";
+
 
 header('Location: seguimiento.php');
 ?>

@@ -63,6 +63,7 @@
                     <th>País</th>
                     <th>Ciudad</th>
                     <th>Estado</th>
+                    <th>Tipificación</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -90,6 +91,7 @@
                     <td><?php echo $cliente ['pais']; ?></td>
                     <td><?php echo $cliente ['ciudad']; ?></td>
                     <td><?php echo $cliente ['estado']; ?></td>
+                    <td><?php echo $cliente ['tipif']; ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -110,46 +112,44 @@
                                 <form action="actualizar.php" method="post">
                                 <div class="row">
                                     <input class="form-control" type="hidden" name="id" id="id">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                     <label>Fecha de contacto</label>
                                     <input class="form-control" type="date" name="fecha" id="fecha">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-8">
                                     <label>Nombre</label>
                                     <input class="form-control" type="text" name="nombre" id="nombre">
                                     </div>
-                                    <div class="col-8">
+                                    <div class="col-3">
                                     <label>Correo</label>
                                     <input class="form-control" type="text" name="correo" id="correo">
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                     <label>Número</label>
                                     <input class="form-control" type="text" name="numU" id="numU">
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                     <label>País</label>
                                     <input class="form-control" type="text" name="pais" id="pais">
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                     <label>Ciudad</label>
                                     <input class="form-control" type="text" name="ciudad" id="ciudad">
                                     </div>
-                                    <div class="col-4">
-                                    <label>Estado</label>
-                                    <select class="form-control" type="text" name="estado" id="estado">
-                                    <option value="">-- Seleccione --</option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Solicitud Demo">Solicitud  Demo</option>
-                                    <option value="Demo Activo">Demo Activo</option>
-                                    <option value="Gestión en Proceso">Gestión en Proceso</option>
-                                    <option value="Sin Respuesta en Proceso">Sin Respuesta en Proceso</option>
-                                    <option value="Desistio">Desistio</option>
-                                    <option value="No contacto">No contacto</option>
-                                    <option value="No whatsapp">No whatsapp</option>
-                                    <option value="Restringido">Restringido</option>       
-                                    <option value="Solicitud de pago">Solicitud de pago</option>
-                                    </select>
+                                    
+                                    <div class="col-6">
+                                        <small>Estado</small>
+                                        <select class="form-control" name="estado" id="estado" onchange="cargarPueblos();">
+                                            <option value="">Seleccione estado</option>
+                                        </select>
                                     </div>
+                                    <div class="col-6">
+                                        <small>Tipíficación</small>
+                                        <select class="form-control" name="tipif" id="tipif">
+                                            <option value="">Seleccione tipificación</option>
+                                        </select>
+                                    </div>
+                                    
                                     <input class="form-control btn-outline-success" type="submit" name="btnA" value="Actualizar">
                                 </div>
                                 </form>
@@ -160,6 +160,7 @@
 
 
                 <?php } 
+
                 // Descarga excel
                 if(isset($_POST['btnExcel'])){
                     
@@ -190,6 +191,7 @@
                     <th>País</th>
                     <th>Ciudad</th>
                     <th>Estado</th>
+                    <th>Tipificación</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -203,6 +205,7 @@
                     <td><?php echo $cliente ['pais']; ?></td>
                     <td><?php echo $cliente ['ciudad']; ?></td>
                     <td><?php echo $cliente ['estado']; ?></td>
+                    <td><?php echo $cliente ['tipif']; ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -253,10 +256,62 @@
         document.getElementById('numU').value = cinco;
         document.getElementById('pais').value = seis;
         document.getElementById('ciudad').value = siete;
-        document.getElementById('estado').value = ocho;
     }
+function cargarProvincias() {
+    var array = ["Activo","Desistió","No_contacto","Sin_respuesta","Gestión_en_proceso"];
+    array.sort();
+    addOptions("estado", array);
+}
 
+//Función para agregar opciones a un <select>.
+function addOptions(domElement, array) {
+    var selector = document.getElementsByName(domElement)[0];
+    for (provincia in array) {
+        var opcion = document.createElement("option");
+        opcion.text = array[provincia];
+        // Añadimos un value a los option para hacer mas facil escoger los pueblos
+        opcion.value = array[provincia].toLowerCase()
+        selector.add(opcion);
+    }
+}
+
+function cargarPueblos() {
+    // Objeto de provincias con pueblos
+    var listaPueblos = {
+      activo: ["Paquete Mensual","Paquete 3 meses","Paquete 6 meses","Paquete 12 meses"],
+      desistió: ["Paquete Mensual","Precio / Competencia","Inconformidad con la plataforma","Medio de pago","Servicio Activo"],
+      no_contacto: ["Visto /Leído","Sin WhatsApp","Bloqueo"],
+      sin_respuesta: ["Uso demo / Sin respuesta","Servicio Gratis","No tiene tiempo","Sin intención de compra","Problemas descargar la APP"],
+      gestión_en_proceso: ["Demo activo","Solicitud de demo","Solicitud de pago","Posible venta","Cliente en gestión"]
+    }
+    
+    var provincias = document.getElementById('estado')
+    var pueblos = document.getElementById('tipif')
+    var provinciaSeleccionada = provincias.value
+    
+    // Se limpian los pueblos
+    pueblos.innerHTML = '<option value="">Tipificación...</option>'
+    
+    if(provinciaSeleccionada !== ''){
+      // Se seleccionan los pueblos y se ordenan
+      provinciaSeleccionada = listaPueblos[provinciaSeleccionada]
+      provinciaSeleccionada.sort()
+    
+      // Insertamos los pueblos
+      provinciaSeleccionada.forEach(function(pueblo){
+        let opcion = document.createElement('option')
+        opcion.value = pueblo
+        opcion.text = pueblo
+        pueblos.add(opcion)
+      });
+    }
+    
+  }
+  
+// Iniciar la carga de provincias solo para comprobar que funciona
+cargarProvincias();
 </script>
+
 <?php
     include("../general/footer.php");
 ?>
