@@ -170,6 +170,7 @@
                                         <option value="Pauta Paga">Pauta Paga</option>
                                         <option value="Pauta Orgánica">Pauta Orgánica</option>
                                         <option value="Referido">Referido</option>
+                                        <option value="Cartera">Cartera</option>
                                         <option value="Base">Base</option>
                                     </select>
                                     </div>
