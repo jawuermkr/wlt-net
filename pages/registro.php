@@ -65,7 +65,7 @@
                     <div class="col-4">
                     <small>Fuente</small>
                     <select class="form-control" type="text" name="fuente" required>
-                        <option value="">Seleccione estado</option>    
+                        <option value="">Seleccione fuente</option>    
                         <option value="Pauta Paga">Pauta Paga</option>
                         <option value="Pauta Orgánica">Pauta Orgánica</option>
                         <option value="Referido">Referido</option>
@@ -79,7 +79,7 @@
                     <div class="col-4">
                     <small>Moneda</small>
                     <select class="form-control" type="text" name="moneda">
-                        <option value="">Seleccione estado</option>    
+                        <option value="">Seleccione moneda</option>    
                         <option value="Dolar USD">Dolar USD</option>
                         <option value="Euro EUR">Euro EUR</option>
                         <option value="Peso colombiano COP">Peso colombiano COP</option>

@@ -57,13 +57,18 @@
                     <th>Editar</th>
                     <th>ID Asesor</th>
                     <th>Fecha</th>
+                    <th>Reaccion del cliente</th>
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Contacto</th>
                     <th>País</th>
                     <th>Ciudad</th>
+                    <th>Fuente</th>
+                    <th>Valor</th>
+                    <th>Moneda</th>
                     <th>Estado</th>
                     <th>Tipificación</th>
+                    <th>Observaciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -78,20 +83,28 @@
                         '<?php echo $cliente ['numU']; ?>',
                         '<?php echo $cliente ['pais']; ?>',
                         '<?php echo $cliente ['ciudad']; ?>', 
-                        '<?php echo $cliente['estado']; ?>')" 
+                        '<?php echo $cliente['estado']; ?>',
+                        '<?php echo $cliente['valor']; ?>',
+                        '<?php echo $cliente['fuente']; ?>',
+                        '<?php echo $cliente['moneda']; ?>')" 
                         data-toggle="modal" data-target="#modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                     </svg></button>
                     </td>
                     <td><?php echo $cliente ['identiAse']; ?></td>
                     <td><?php echo $cliente ['fecha']; ?></td>
+                    <td><?php echo $cliente ['fecha_reaccion']; ?></td>
                     <td><?php echo $cliente ['nombre']; ?></td>
                     <td><?php echo $cliente ['correo']; ?></td>
                     <td><?php echo $cliente ['numU']; ?></td>
                     <td><?php echo $cliente ['pais']; ?></td>
                     <td><?php echo $cliente ['ciudad']; ?></td>
+                    <td><?php echo $cliente ['fuente']; ?></td>
+                    <td><?php echo $cliente ['valor']; ?></td>
+                    <td><?php echo $cliente ['moneda']; ?></td>
                     <td><?php echo $cliente ['estado']; ?></td>
                     <td><?php echo $cliente ['tipif']; ?></td>
+                    <td><?php echo $cliente ['obs']; ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -149,6 +162,30 @@
                                             <option value="">Seleccione tipificación</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-4">
+                                    <small>Fuente</small>
+                                    <select class="form-control" type="text" name="fuente" id="fuente" required>
+                                        <option value="">Seleccione fuente</option>    
+                                        <option value="Pauta Paga">Pauta Paga</option>
+                                        <option value="Pauta Orgánica">Pauta Orgánica</option>
+                                        <option value="Referido">Referido</option>
+                                        <option value="Base">Base</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-4">
+                                    <small>Valor de venta</small>
+                                    <input class="form-control" type="text" name="valor" id="valor">
+                                    </div>
+                                    <div class="col-4">
+                                    <small>Moneda</small>
+                                    <select class="form-control" type="text" name="moneda" id="moneda">
+                                        <option value="">Seleccione moneda</option>    
+                                        <option value="Dolar USD">Dolar USD</option>
+                                        <option value="Euro EUR">Euro EUR</option>
+                                        <option value="Peso colombiano COP">Peso colombiano COP</option>
+                                    </select>
+                                    </div>
                                     
                                     <input class="form-control btn-outline-success" type="submit" name="btnA" value="Actualizar">
                                 </div>
@@ -185,13 +222,18 @@
                     <tr>
                     <th>ID Asesor</th>
                     <th>Fecha</th>
+                    <th>Reaccion del cliente</th>
                     <th>Nombre</th>
                     <th>Correo</th>
                     <th>Contacto</th>
                     <th>País</th>
                     <th>Ciudad</th>
+                    <th>Fuente</th>
+                    <th>Valor</th>
+                    <th>Moneda</th>
                     <th>Estado</th>
                     <th>Tipificación</th>
+                    <th>Observaciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -199,13 +241,18 @@
                     <tr>
                     <td><?php echo $cliente ['identiAse']; ?></td>
                     <td><?php echo $cliente ['fecha']; ?></td>
+                    <td><?php echo $cliente ['fecha_reaccion']; ?></td>
                     <td><?php echo $cliente ['nombre']; ?></td>
                     <td><?php echo $cliente ['correo']; ?></td>
                     <td><?php echo $cliente ['numU']; ?></td>
                     <td><?php echo $cliente ['pais']; ?></td>
                     <td><?php echo $cliente ['ciudad']; ?></td>
+                    <td><?php echo $cliente ['fuente']; ?></td>
+                    <td><?php echo $cliente ['valor']; ?></td>
+                    <td><?php echo $cliente ['moneda']; ?></td>
                     <td><?php echo $cliente ['estado']; ?></td>
                     <td><?php echo $cliente ['tipif']; ?></td>
+                    <td><?php echo $cliente ['obs']; ?></td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -248,7 +295,7 @@
 </div>
 
 <script>
-    function btnUpdate(id, dos, tres, cuatro, cinco, seis, siete, ocho) {
+    function btnUpdate(id, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez, once) {
         document.getElementById('id').value = id;
         document.getElementById('fecha').value = dos;
         document.getElementById('nombre').value = tres;
@@ -256,6 +303,9 @@
         document.getElementById('numU').value = cinco;
         document.getElementById('pais').value = seis;
         document.getElementById('ciudad').value = siete;
+        document.getElementById('fuente').value = ocho;
+        document.getElementById('valor').value = nueve;
+        document.getElementById('moneda').value = diez;
     }
 function cargarProvincias() {
     var array = ["Activo","Desistió","No_contacto","Sin_respuesta","Gestión_en_proceso"];
@@ -278,11 +328,11 @@ function addOptions(domElement, array) {
 function cargarPueblos() {
     // Objeto de provincias con pueblos
     var listaPueblos = {
-      activo: ["Paquete Mensual","Paquete 3 meses","Paquete 6 meses","Paquete 12 meses"],
-      desistió: ["Paquete Mensual","Precio / Competencia","Inconformidad con la plataforma","Medio de pago","Servicio Activo"],
-      no_contacto: ["Visto /Leído","Sin WhatsApp","Bloqueo"],
-      sin_respuesta: ["Uso demo / Sin respuesta","Servicio Gratis","No tiene tiempo","Sin intención de compra","Problemas descargar la APP"],
-      gestión_en_proceso: ["Demo activo","Solicitud de demo","Solicitud de pago","Posible venta","Cliente en gestión"]
+        activo: ["1 Pantalla Mensual","2 Pantalla Mensual","3 Pantalla Mensual","4 Pantalla Mensual","5 Pantalla Mensual","1 Pantalla Trimestral","2 Pantalla Trimestral","3 Pantalla Trimestral","4 Pantalla Trimestral","5 Pantalla Trimestral","1 Pantalla Semestral","2 Pantalla Semestral","3 Pantalla Semestral","4 Pantalla Semestral","5 Pantalla Semestral","1 Pantalla Anual","2 Pantalla Anual","3 Pantalla Anual","4 Pantalla Anual","5 Pantalla Anual"],
+        desistió: ["Precio / Competencia","Inconformidad con la plataforma","Servicio Activo","Desconfianza","No le interesa"],
+        no_contacto: ["Visto /Leído","Sin WhatsApp","Bloqueo"],
+        sin_respuesta: ["Uso demo / Sin respuesta","No tiene tiempo","Sin intención de compra"],
+        gestión_en_proceso: ["Cliente en gestion","Volver a llamar","Demo activo","Solicitud de demo","Solicitud de pago","Problemas descargar la APP","Posible venta"]
     }
     
     var provincias = document.getElementById('estado')
