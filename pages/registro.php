@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-3">
                     <small>Fecha registro</small>
-                    <input class="form-control" type="text" name="fecha" readonly required value="<?php echo date("Y-m-d"); ?>">
+                    <input class="form-control" type="text" name="fecha" required value="<?php echo date("Y-m-d"); ?>">
                     </div>
                     <div class="col-3">
                     <small>Reacción del cliente</small>
