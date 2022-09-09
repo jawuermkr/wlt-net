@@ -11,13 +11,17 @@
             <form action="registro.php" method="post">
                 <div class="row">
                     <h3>Datos de asesor/a</h3>
-                    <div class="col-6">
+                    <div class="col-3">
                     <small>Nombres y apellidos</small>
                     <input class="form-control" type="text" name="nombreAse" readonly required value="<?php echo $_SESSION['nombre']; ?>">
                     </div>
                     <div class="col-3">
                     <small>Fecha registro</small>
-                    <input class="form-control" type="text" name="fecha" required value="<?php echo date("Y-m-d"); ?>">
+                    <input class="form-control" type="text" name="fecha" readonly required value="<?php echo date("Y-m-d"); ?>">
+                    </div>
+                    <div class="col-3">
+                    <small>Reacción del cliente</small>
+                    <input class="form-control" type="text" name="fecha_reaccion" required value="<?php echo date("Y-m-d"); ?>">
                     </div>
                     <div class="col-3">
                     <small>Marca</small>
@@ -57,6 +61,31 @@
                             <option value="">Seleccione tipificación</option>
                         </select>
                     </div>
+
+                    <div class="col-4">
+                    <small>Fuente</small>
+                    <select class="form-control" type="text" name="fuente" required>
+                        <option value="">Seleccione estado</option>    
+                        <option value="Pauta Paga">Pauta Paga</option>
+                        <option value="Pauta Orgánica">Pauta Orgánica</option>
+                        <option value="Referido">Referido</option>
+                        <option value="Base">Base</option>
+                    </select>
+                    </div>
+                    <div class="col-4">
+                    <small>Valor de venta</small>
+                    <input class="form-control" type="text" name="valor">
+                    </div>
+                    <div class="col-4">
+                    <small>Moneda</small>
+                    <select class="form-control" type="text" name="moneda">
+                        <option value="">Seleccione estado</option>    
+                        <option value="Dolar USD">Dolar USD</option>
+                        <option value="Euro EUR">Euro EUR</option>
+                        <option value="Peso colombiano COP">Peso colombiano COP</option>
+                    </select>
+                    </div>
+
                     <h3>Datos de referidos</h3>
                     <div class="col-6">
                     <small>Nombre de referido</small>
@@ -75,6 +104,10 @@
                     <input class="form-control" type="text" name="numRefD">
                     </div>
                     <div class="col-12">
+                    <small>Observaciones</small>
+                    <textarea class="form-control" type="text" name="obs"></textarea>
+                    </div>
+                    <div class="col-12">
                     <input class="form-control btn btn-outline-success" type="submit" name="btnTipifica" value="Registrar">
                     </div>
                 </div>
@@ -85,21 +118,26 @@
 
                 $identiAse = $_SESSION['id'];
                 $fecha = $_POST['fecha'];
+                $fecha_reaccion = $_POST['fecha_reaccion'];
                 $marca = $_POST['marca'];
                 $nombre = $_POST['nombre'];
                 $correo = $_POST['correo'];
                 $numU = $_POST['numU'];
                 $pais = $_POST['pais'];
                 $ciudad = $_POST['ciudad'];
+                $fuente = $_POST['fuente'];
+                $valor = $_POST['valor'];
+                $moneda = $_POST['moneda'];
                 $estado = $_POST['estado'];
                 $tipif = $_POST['tipif'];
                 $refUno = $_POST['refUno'];
                 $numRefU = $_POST['numRefU'];
                 $refDos = $_POST['refDos'];
                 $numRefD = $_POST['numRefD'];
+                $obs = $_POST['obs'];
 
                 include("../conexion.php");
-                $conexion->query("INSERT INTO tipifica (identiAse, fecha, marca, nombre, correo, numU, pais, ciudad, estado, tipif, refUno, numRefU, refDos, numRefD) VALUES ('$identiAse','$fecha','$marca','$nombre','$correo','$numU','$pais','$ciudad','$estado','$tipif','$refUno','$numRefU','$refDos','$numRefD')");
+                $conexion->query("INSERT INTO tipifica (identiAse, fecha, fecha_reaccion, marca, nombre, correo, numU, pais, ciudad, fuente, valor, moneda, estado, tipif, refUno, numRefU, refDos, numRefD, obs) VALUES ('$identiAse','$fecha','$fecha_reaccion','$marca','$nombre','$correo','$numU','$pais','$ciudad','$fuente','$valor','$moneda','$estado','$tipif','$refUno','$numRefU','$refDos','$numRefD','$obs')");
                 include("../desconexion.php");
             }
             ?>
@@ -141,11 +179,11 @@ function addOptions(domElement, array) {
 function cargarPueblos() {
     // Objeto de provincias con pueblos
     var listaPueblos = {
-      activo: ["Paquete Mensual","Paquete 3 meses","Paquete 6 meses","Paquete 12 meses"],
-      desistió: ["Paquete Mensual","Precio / Competencia","Inconformidad con la plataforma","Medio de pago","Servicio Activo"],
+      activo: ["1 Pantalla Mensual","2 Pantalla Mensual","3 Pantalla Mensual","4 Pantalla Mensual","5 Pantalla Mensual","1 Pantalla Trimestral","2 Pantalla Trimestral","3 Pantalla Trimestral","4 Pantalla Trimestral","5 Pantalla Trimestral","1 Pantalla Semestral","2 Pantalla Semestral","3 Pantalla Semestral","4 Pantalla Semestral","5 Pantalla Semestral","1 Pantalla Anual","2 Pantalla Anual","3 Pantalla Anual","4 Pantalla Anual","5 Pantalla Anual"],
+      desistió: ["Precio / Competencia","Inconformidad con la plataforma","Servicio Activo","Desconfianza","No le interesa"],
       no_contacto: ["Visto /Leído","Sin WhatsApp","Bloqueo"],
-      sin_respuesta: ["Uso demo / Sin respuesta","Servicio Gratis","No tiene tiempo","Sin intención de compra","Problemas descargar la APP"],
-      gestión_en_proceso: ["Demo activo","Solicitud de demo","Solicitud de pago","Posible venta","Cliente en gestión"]
+      sin_respuesta: ["Uso demo / Sin respuesta","No tiene tiempo","Sin intención de compra"],
+      gestión_en_proceso: ["Cliente en gestion","Volver a llamar","Demo activo","Solicitud de demo","Solicitud de pago","Problemas descargar la APP","Posible venta"]
     }
     
     var provincias = document.getElementById('estado')
